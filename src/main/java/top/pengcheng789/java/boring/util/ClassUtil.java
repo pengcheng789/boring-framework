@@ -20,7 +20,7 @@ import java.util.jar.JarFile;
  */
 public class ClassUtil {
 
-    private static final Logger logger = LoggerFactory.getLogger(ClassUtil.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ClassUtil.class);
 
     private static final String PROTOCOL_FILE = "file";
     private static final String PROTOCOL_JAR = "jar";
@@ -38,17 +38,17 @@ public class ClassUtil {
      */
     public static Class<?> loadClass(String className, boolean isInitializes) {
 
-        logger.info("Loading class \'" + className + "\' ...");
+        LOGGER.info("Loading class \'" + className + "\' ...");
 
         Class<?> cls;
         try {
             cls = Class.forName(className, isInitializes, getClassLoader());
         } catch (ClassNotFoundException e) {
-            logger.error("Load \'" + className + "\' failure!");
+            LOGGER.error("Load \'" + className + "\' failure!");
             throw new RuntimeException(e);
         }
 
-        logger.info("Loading class \'" + className + "\' completed.");
+        LOGGER.info("Loaded class \'" + className + "\'.");
 
         return cls;
     }
@@ -71,35 +71,35 @@ public class ClassUtil {
             urls = getClassLoader()
                     .getResources(packageName.replaceAll("\\.", File.separator));
         } catch (IOException e) {
-            logger.error("Process \'" + packageName + "\' failure!");
+            LOGGER.error("Process \'" + packageName + "\' failure!");
             throw new RuntimeException(e);
         }
 
-        logger.info("Processing \'" + packageName + "\' ...");
+        LOGGER.info("Processing \'" + packageName + "\' ...");
 
         while (urls.hasMoreElements()) {
             URL url = urls.nextElement();
             String protocol = url.getProtocol();
 
             if (protocol.equals(PROTOCOL_FILE)) {
-                logger.info("Processing protocol of file ...");
+                LOGGER.info("Processing protocol of file ...");
                 String filePath = url.getPath().replaceAll("%20", " ");
                 handleFile(classSet, filePath, packageName);
-                logger.info("Processing protocol of file completed.");
+                LOGGER.info("Processed protocol of file.");
             } else if (protocol.equals(PROTOCOL_JAR)) {
-                logger.info("Processing protocol of jar ...");
+                LOGGER.info("Processing protocol of jar ...");
                 handleJar(classSet, url);
-                logger.info("Processing protocol of jar completed.");
+                LOGGER.info("Processed protocol of jar.");
             }
         }
 
-        logger.info("Processing \'" + packageName + "\' completed.");
+        LOGGER.info("Processed \'" + packageName + "\'.");
 
         return classSet;
     }
 
     /**
-     * handle normal file or directories.
+     * handle normal file or directory.
      */
     private static void handleFile(Set<Class<?>> classSet, String filePath, String packageName) {
         File[] files = new File(filePath).listFiles(file -> file.isFile()
@@ -111,9 +111,9 @@ public class ClassUtil {
                 String className = packageName + "."
                         + fileName.substring(0, fileName.lastIndexOf("."));
 
-                logger.info("Processing \'" + className + "\' ...");
+                LOGGER.info("Processing \'" + className + "\' ...");
                 addClass(classSet, className);
-                logger.info("Processing \'" + className + "\' completed.");
+                LOGGER.info("Processed \'" + className + "\'.");
             } else {
                 String subFilePath = filePath + File.separator + file.getName();
                 String subPackageName = packageName + "." + file.getName();
@@ -126,7 +126,7 @@ public class ClassUtil {
      * handle jar file.
      */
     private static void handleJar(Set<Class<?>> classSet, URL jarUrl) {
-        logger.info("Processing \'" + jarUrl.getPath() + "\' ...");
+        LOGGER.info("Processing \'" + jarUrl.getPath() + "\' ...");
 
         try {
             JarURLConnection connection = (JarURLConnection) jarUrl.openConnection();
@@ -143,11 +143,11 @@ public class ClassUtil {
                 }
             }
         } catch (IOException e) {
-            logger.error("Processing \'" + jarUrl.getPath() + "\' failure!");
+            LOGGER.error("Process \'" + jarUrl.getPath() + "\' failure!");
             throw new RuntimeException(e);
         }
 
-        logger.info("Processing \'" + jarUrl.getPath() + "\' completed.");
+        LOGGER.info("Processed \'" + jarUrl.getPath() + "\'.");
     }
 
     /**
@@ -156,6 +156,6 @@ public class ClassUtil {
     private static void addClass(Set<Class<?>> classSet, String className) {
         Class<?> cls = loadClass(className);
         classSet.add(cls);
-        logger.info("Add \'" + className + "\' to class set.");
+        LOGGER.info("Add \'" + className + "\' to class set.");
     }
 }
