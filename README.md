@@ -13,6 +13,10 @@ A web framework written only for graduate thesis.
 
 * jre 8
 
+## License
+
+* Apache v2
+
 ## Update
 
 ### 20171226
