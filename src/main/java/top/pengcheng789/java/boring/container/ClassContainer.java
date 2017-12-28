@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.pengcheng789.java.boring.annotation.Controller;
 import top.pengcheng789.java.boring.annotation.Service;
-import top.pengcheng789.java.boring.helper.ConfigHelper;
+import top.pengcheng789.java.boring.config.BoringConfig;
 import top.pengcheng789.java.boring.util.ClassUtil;
 
 import java.util.HashSet;
@@ -20,7 +20,11 @@ public class ClassContainer {
     private static final Logger LOGGER = LoggerFactory.getLogger(ClassContainer.class);
 
     private static final Set<Class<?>> CLASS_SET
-            = ClassUtil.getClassSet(ConfigHelper.getAppBasePackage());
+            = ClassUtil.getClassSet(BoringConfig.getAppBasePackage());
+
+    static {
+        LOGGER.info("Loaded \'" + ClassContainer.class.getCanonicalName() + "\'.");
+    }
 
     /**
      * Get set of loaded classes.

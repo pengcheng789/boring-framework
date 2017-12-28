@@ -3,6 +3,7 @@ package top.pengcheng789.java.boring.container;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.pengcheng789.java.boring.annotation.Action;
+import top.pengcheng789.java.boring.bean.Handle;
 import top.pengcheng789.java.boring.bean.Request;
 import top.pengcheng789.java.boring.exception.InvalidRequestPathException;
 
@@ -23,7 +24,7 @@ public class ActionContainer {
 
     private static final String REQUEST_PATH_REGULAR = "/[A-Za-z0-9_/]*";
 
-    private static final Map<Request, Method> ACTION_MAP = new HashMap<>();
+    private static final Map<Request, Handle> ACTION_MAP = new HashMap<>();
 
     static {
         LOGGER.info("Initializing a map of request and action method.");
@@ -32,16 +33,16 @@ public class ActionContainer {
 
         classSet.forEach(cls -> {
             Method[] methods = cls.getDeclaredMethods();
-            Arrays.stream(methods).forEach(ActionContainer::addActionMap);
+            Arrays.stream(methods).forEach(method -> addActionMap(new Handle(cls, method)));
         });
 
         LOGGER.info("Initialized a map of request and action method.");
     }
 
     /**
-     * Get the method according 'Request'.
+     * Get the 'Handle' according 'Request'.
      */
-    public static Method getMethod(Action.RequestMethod requestMethod, String requestPath) {
+    public static Handle getHandle(Action.RequestMethod requestMethod, String requestPath) {
         return ACTION_MAP.get(new Request(requestMethod, requestPath));
     }
 
@@ -49,16 +50,16 @@ public class ActionContainer {
      * if the specify method is annotation present 'Action',
      * it will be put in the action map.
      */
-    private static void addActionMap(Method method) {
-        if (method.isAnnotationPresent(Action.class)) {
-            Action action = method.getAnnotation(Action.class);
+    private static void addActionMap(Handle handle) {
+        if (handle.getMethod().isAnnotationPresent(Action.class)) {
+            Action action = handle.getMethod().getAnnotation(Action.class);
 
             if (!action.path().matches(REQUEST_PATH_REGULAR)) {
                 LOGGER.error("\'" + action.path() + "\' is invalid request path!");
                 throw new InvalidRequestPathException();
             }
 
-            ACTION_MAP.put(new Request(action.method(), action.path()), method);
+            ACTION_MAP.put(new Request(action.method(), action.path()), handle);
         }
     }
 }

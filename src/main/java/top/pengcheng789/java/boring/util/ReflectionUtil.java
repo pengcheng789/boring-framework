@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
  *
  * @author pen
  */
-public class ReflectionUtil {
+public final class ReflectionUtil {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ReflectionUtil.class);
 
@@ -46,7 +46,8 @@ public class ReflectionUtil {
      * Invoke method.
      */
     public static Object invokeMethod(Object obj, Method method, Object... args) {
-        LOGGER.info("Invoking \'" + method.getName() + "\' ...");
+        LOGGER.info("Invoking \'" + method.getDeclaringClass() +  "." + method.getName()
+                + "\' ...");
 
         Object result;
 
@@ -58,7 +59,7 @@ public class ReflectionUtil {
             throw new RuntimeException(e);
         }
 
-        LOGGER.info("Invoked \'" + method.getName() + "\'.");
+        LOGGER.info("Invoked \'" + method.getDeclaringClass() +  "." + method.getName() + "\'.");
         return result;
     }
 }

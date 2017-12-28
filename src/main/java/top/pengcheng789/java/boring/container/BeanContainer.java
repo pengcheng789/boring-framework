@@ -20,7 +20,7 @@ public class BeanContainer {
     private static final Map<Class<?>, Object> BEAN_MAP = new HashMap<>();
 
     static {
-        LOGGER.info("Initializing a map of class and instance.");
+        LOGGER.info("Initializing a map of class and instance ...");
 
         Set<Class<?>> classSet = ClassContainer.getClassSet();
         classSet.forEach(BeanContainer::addBeanMap);
