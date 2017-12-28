@@ -22,7 +22,6 @@ import top.pengcheng789.java.boring.util.RequestUtil;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +45,7 @@ public class BoringServlet extends HttpServlet {
     private TemplateEngine templateEngine;
 
     @Override
-    public void init(ServletConfig servletConfig) throws ServletException {
+    public void init(ServletConfig servletConfig) {
         System.out.println(ConfigConstant.TITLE_ASCII_ART);
 
         ContainerInitializer.init();
@@ -65,6 +64,8 @@ public class BoringServlet extends HttpServlet {
         if (requestPath == null) {
             requestPath = "/";
         }
+
+        LOGGER.info("Request path is \'" + requestPath + "\'.");
 
         if (requestPath.equals(SITE_ICON_REQUEST_PATH)) {
             return;

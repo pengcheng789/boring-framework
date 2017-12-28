@@ -13,9 +13,13 @@ A web framework written only for graduate thesis.
 
 * jre 8
 
+## Document
+
+See the [Wiki](https://github.com/pengcheng789/boring-framework/wiki).
+
 ## License
 
-* Apache v2
+* Apache License v2
 
 ## Update
 
