@@ -19,6 +19,10 @@ A web framework written only for graduate thesis.
 
 ## Update
 
+### 20171228-2
+
+* fix a serious bug.
+
 ### 20171228
 
 * Release the first version library v1.0.0 .

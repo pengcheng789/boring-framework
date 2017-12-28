@@ -1,5 +1,7 @@
 package top.pengcheng789.java.boring;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -37,6 +39,8 @@ import java.lang.reflect.Method;
 @WebServlet(urlPatterns = "/*", loadOnStartup = 0)
 public class BoringServlet extends HttpServlet {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(BoringServlet.class);
+
     private static final String SITE_ICON_REQUEST_PATH = "/favicon.ico";
 
     private TemplateEngine templateEngine;
@@ -57,6 +61,10 @@ public class BoringServlet extends HttpServlet {
         Action.RequestMethod requestMethod
                 = CastUtil.stringToRequestMethod(request.getMethod());
         String requestPath = request.getPathInfo();
+
+        if (requestPath == null) {
+            requestPath = "/";
+        }
 
         if (requestPath.equals(SITE_ICON_REQUEST_PATH)) {
             return;
