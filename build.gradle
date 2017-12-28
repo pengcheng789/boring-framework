@@ -1,5 +1,5 @@
 group 'top.pengcheng789.java'
-version '1.0.0'
+version '1.0.1'
 
 apply plugin: 'java'
 apply plugin: 'maven-publish'
@@ -30,7 +30,7 @@ publishing {
         mavenCustom(MavenPublication) {
             groupId 'top.pengcheng789.java'
             artifactId 'boring-framework'
-            version '1.0.0'
+            version "$version"
 
             from components.java
         }
