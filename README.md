@@ -6,12 +6,16 @@ A web framework written only for graduate thesis.
 
 ### Development Environment
 
-* OpenJDK 1.8.0_151
+* OpenJDK 9.0.1
 * Ubuntu 17.10
 
 ### Runtime Environment
 
-* jre 8
+* jre 9
+
+## Usage
+
+There is a [demo](https://github.com/pengcheng789/example-boring) with Boring Framework.
 
 ## Document
 
@@ -22,6 +26,11 @@ See the [Wiki](https://github.com/pengcheng789/boring-framework/wiki).
 * Apache License v2
 
 ## Update
+
+### 20171229
+
+* Develop with jdk 9 now.
+* Replace `newInstance()` with `getConstructor().newInstance()`.
 
 ### 20171228-2
 

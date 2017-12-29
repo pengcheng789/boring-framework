@@ -24,8 +24,10 @@ public final class ReflectionUtil {
         Object instance;
 
         try {
-            instance = cls.newInstance();
-        } catch (IllegalAccessException | InstantiationException e) {
+            instance = cls.getConstructor().newInstance();
+        } catch (IllegalAccessException | InstantiationException | NoSuchMethodException
+            | InvocationTargetException e) {
+
             LOGGER.error("Create a instance of \'" + cls.getCanonicalName() + "\' failure!");
             throw new RuntimeException(e);
         }

@@ -20,7 +20,7 @@ public class Param {
     }
 
     public Map<String, Object> getFieldMap() {
-        Map<String, Object> fieldMap = new HashMap<String, Object>();
+        Map<String, Object> fieldMap = new HashMap<>();
 
         if (CollectionUtil.isNotEmpty(formParamList)) {
             for (FormParam formParam : formParamList) {

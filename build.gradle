@@ -4,7 +4,8 @@ version '1.0.1'
 apply plugin: 'java'
 apply plugin: 'maven-publish'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 9.0
+targetCompatibility = 9.0
 
 repositories {
     mavenCentral()
