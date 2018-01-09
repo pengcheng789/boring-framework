@@ -15,7 +15,9 @@ A web framework written only for graduate thesis.
 
 ## Usage
 
-There is a [demo](https://github.com/pengcheng789/example-boring) with Boring Framework.
+There are two small demo with Boring Framework.
+* [java](https://github.com/pengcheng789/example-boring)
+* [kotlin](https://github.com/pengcheng789/example-boring4k)
 
 ## Document
 
@@ -26,6 +28,11 @@ See the [Wiki](https://github.com/pengcheng789/boring-framework/wiki).
 * Apache License v2
 
 ## Update
+
+### 20180109
+
+* Optimize request parameter.
+* Add the function of dependency injection.
 
 ### 20171229
 

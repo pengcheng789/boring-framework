@@ -14,33 +14,25 @@
  * limitations under the License.
  */
 
-package top.pengcheng789.java.boring.bean;
+package top.pengcheng789.java.boring.annotation;
 
-import java.util.HashMap;
-import java.util.Map;
+import top.pengcheng789.java.boring.bean.NullClass;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
- * @author pen
+ * @author Cai Pengcheng
+ * Create date: 18-1-9
  */
-public class View {
-
-    private String path;
-    private Map<String, Object> model;
-
-    public View(String path) {
-        this.path = path;
-        this.model = new HashMap<>();
-    }
-
-    public void setAttribute(String key, Object obj) {
-        model.put(key, obj);
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public Map<String, Object> getModel() {
-        return model;
-    }
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Inject {
+    /**
+     * Specified a class type of injection is optional.
+     * The default value is the class of 'NullClass'.
+     */
+    Class<?> type() default NullClass.class;
 }

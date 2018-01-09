@@ -14,33 +14,19 @@
  * limitations under the License.
  */
 
-package top.pengcheng789.java.boring.bean;
-
-import java.util.HashMap;
-import java.util.Map;
+package top.pengcheng789.java.boring.exception;
 
 /**
- * @author pen
+ * @author Cai Pengcheng
+ * Create date: 18-1-9
  */
-public class View {
+public class BeanInstanceNotFoundException extends RuntimeException {
 
-    private String path;
-    private Map<String, Object> model;
-
-    public View(String path) {
-        this.path = path;
-        this.model = new HashMap<>();
+    public BeanInstanceNotFoundException() {
+        super();
     }
 
-    public void setAttribute(String key, Object obj) {
-        model.put(key, obj);
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public Map<String, Object> getModel() {
-        return model;
+    public BeanInstanceNotFoundException(String string) {
+        super(string);
     }
 }

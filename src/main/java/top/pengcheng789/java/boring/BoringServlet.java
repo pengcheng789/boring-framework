@@ -1,3 +1,19 @@
+/*
+ * Copyright (c) 2018 Cai Pengcheng
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package top.pengcheng789.java.boring;
 
 import org.slf4j.Logger;
@@ -80,9 +96,13 @@ public class BoringServlet extends HttpServlet {
             Param param = RequestUtil.createParam(request);
             Object result;
             // 若请求参数为空，则不需要传入参数
-            if (param.isEmpty()) {
+            if (actionMethod.getParameterTypes().length == 0) {
                 result = ReflectionUtil.invokeMethod(controllerBean, actionMethod);
             } else {
+                if (param.isEmpty()) {
+                    response400(response);
+                    return;
+                }
                 result = ReflectionUtil.invokeMethod(controllerBean,
                         actionMethod, param);
             }
@@ -160,5 +180,16 @@ public class BoringServlet extends HttpServlet {
             writer.flush();
             writer.close();
         }
+    }
+
+    /**
+     * Response 400
+     */
+    private void response400(HttpServletResponse response) throws IOException {
+        response.setStatus(400);
+        PrintWriter writer = response.getWriter();
+        writer.write("400");
+        writer.flush();
+        writer.close();
     }
 }
