@@ -1,0 +1,12 @@
+// the base package of application.
+boring.app.base_package = (com.example)
+
+// Templates path setting(html)
+boring.app.html_path = (/WEB-INF/templates/)
+
+// Database related settings
+boring.app.jdbc.enable = (true or false)
+boring.app.jdbc.driver = (com.mysql.cj.jdbc.Driver)
+boring.app.jdbc.url = (jdbc:mysql://localhost:3306/example)
+boring.app.jdbc.username = (root)
+boring.app.jdbc.password = (123456)

@@ -29,10 +29,15 @@ See the [Wiki](https://github.com/pengcheng789/boring-framework/wiki).
 
 ## Update
 
+### 20180113
+
+* Restructure the package.
+* Add the feature of model container.
+
 ### 20180109
 
 * Optimize request parameter.
-* Add the function of dependency injection.
+* Add the feature of dependency injection.
 
 ### 20171229
 
