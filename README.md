@@ -29,6 +29,11 @@ See the [Wiki](https://github.com/pengcheng789/boring-framework/wiki).
 
 ## Update
 
+### 20180123
+
+* Create the supporting of mongodb.
+* Create the database container.
+
 ### 20180113
 
 * Restructure the package.

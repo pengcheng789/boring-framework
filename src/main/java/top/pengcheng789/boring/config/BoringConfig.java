@@ -32,6 +32,9 @@ public class BoringConfig {
     private static final Properties PROPERTIES
             = PropertyUtil.loadProperties(ConfigConstant.CONFIG_FILE);
 
+    private static final String DEFAULT_APP_MONGODB_HOST = "127.0.0.1";
+    private static final int DEFAULT_APP_MONGODB_PORT = 27017;
+
     /**
      * Return the value of 'boring.app.base_package'.
      */
@@ -58,7 +61,45 @@ public class BoringConfig {
     /**
      * Return true if enable jdbc driver.
      */
-    public static boolean isJdbcEnable() {
-        return PropertyUtil.getBoolean(PROPERTIES, ConfigConstant.APP_JDBC_ENABLE);
+    public static boolean isMongodbEnable() {
+        return PropertyUtil.getBoolean(PROPERTIES, ConfigConstant.APP_MONGODB_ENABLE);
+    }
+
+    /**
+     * Return the mongodb host.
+     */
+    public static String getAppMongoHost() {
+        return PropertyUtil.getString(PROPERTIES,
+            ConfigConstant.APP_MONGODB_HOST, DEFAULT_APP_MONGODB_HOST);
+    }
+
+    /**
+     * Return the mongodb port.
+     */
+    public static int getAppMongoPort() {
+        return PropertyUtil.getInt(PROPERTIES,
+            ConfigConstant.APP_MONGODB_PORT, DEFAULT_APP_MONGODB_PORT);
+    }
+
+    /**
+     * Return the name of specified database in mongodb.
+     */
+    public static String getAppMongoDatabase() {
+        return PropertyUtil.getString(PROPERTIES, ConfigConstant.APP_MONGODB_DATABASE);
+    }
+
+    /**
+     * Return the mongodb host.
+     */
+    public static String getAppMongoUsername() {
+        return PropertyUtil.getString(PROPERTIES, ConfigConstant.APP_MONGODB_USERNAME);
+    }
+
+
+    /**
+     * Return the mongodb password.
+     */
+    public static String getAppMongoPassword() {
+        return PropertyUtil.getString(PROPERTIES, ConfigConstant.APP_MONGODB_PASSWORD);
     }
 }

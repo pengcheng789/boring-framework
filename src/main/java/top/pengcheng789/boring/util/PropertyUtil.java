@@ -87,6 +87,23 @@ public final class PropertyUtil {
     }
 
     /**
+     * Return the int type value of specified key,
+     * If the key not existed, it will be return 0.
+     */
+    public static int getInt(Properties properties, String key) {
+        return getInt(properties, key, 0);
+    }
+
+    /**
+     * Return the int type value of specified key,
+     * and you can specify the default value.
+     */
+    public static int getInt(Properties properties, String key, int defaultValue) {
+        return properties.contains(key) ?
+            Integer.valueOf(properties.getProperty(key)) : defaultValue;
+    }
+
+    /**
      * Create a new file and load it.
      */
     private static void createPropertyFileAndLoad(Properties properties, String fileName) {

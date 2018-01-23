@@ -51,7 +51,7 @@ public final class StringUtil {
 
     /**
      * Convert to a string with a database table format.
-     *
+     * For example, "UserDetail" will be converted to "user_detail".
      */
     public static String convertToDbTableName(String string) {
         char[] chars = string.toCharArray();

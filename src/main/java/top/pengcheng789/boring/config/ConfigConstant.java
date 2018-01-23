@@ -27,11 +27,12 @@ public class ConfigConstant {
 
     public static final String APP_HTML_PATH = "boring.app.html_path";
 
-    public static final String APP_JDBC_ENABLE = "boring.app.jdbc.enable";
-    public static final String APP_JDBC_DRIVER = "boring.app.jdbc.driver";
-    public static final String APP_JDBC_URL = "boring.app.jdbc.url";
-    public static final String APP_JDBC_USERNAME = "boring.app.jdbc.username";
-    public static final String APP_JDBC_PASSWORD = "boring.app.jdbc.password";
+    public static final String APP_MONGODB_ENABLE = "boring.app.mongodb.enable";
+    public static final String APP_MONGODB_HOST = "boring.app.mongodb.host";
+    public static final String APP_MONGODB_PORT = "boring.app.mongodb.port";
+    public static final String APP_MONGODB_DATABASE = "boring.app.mongodb.database";
+    public static final String APP_MONGODB_USERNAME = "boring.app.mongodb.username";
+    public static final String APP_MONGODB_PASSWORD = "boring.app.mongodb.password";
 
     public static final String TITLE_ASCII_ART =
             " ____             _             \n" +

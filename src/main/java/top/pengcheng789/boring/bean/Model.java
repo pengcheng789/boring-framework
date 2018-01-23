@@ -25,5 +25,5 @@ import top.pengcheng789.boring.annotation.ModelField;
  */
 public abstract class Model {
     @ModelField(type = ModelField.FieldType.PRIMARY)
-    public int id;
+    public String id;
 }
