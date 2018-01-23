@@ -102,4 +102,13 @@ public class BoringConfig {
     public static String getAppMongoPassword() {
         return PropertyUtil.getString(PROPERTIES, ConfigConstant.APP_MONGODB_PASSWORD);
     }
+
+    /**
+     * DEPRECATED!
+     * Return the jdbc enable.
+     */
+    @Deprecated
+    public static boolean isJdbcEnable() {
+        return false;
+    }
 }

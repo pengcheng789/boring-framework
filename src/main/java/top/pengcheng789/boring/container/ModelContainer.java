@@ -32,6 +32,7 @@ import java.util.*;
  * @author Cai Pengcheng
  * Create date: 18-1-11
  */
+@Deprecated
 public class ModelContainer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ModelContainer.class);
