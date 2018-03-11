@@ -35,7 +35,6 @@ public @interface ModelField {
 
     enum FieldType {
         NORMAL,
-        PRIMARY,
         FOREIGN,
         UNIQUE
     }

@@ -4,12 +4,11 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
+import com.mongodb.client.MongoDatabase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.pengcheng789.boring.config.BoringConfig;
 import top.pengcheng789.boring.exception.NotSpecifiedDbNameException;
-
-import java.util.Arrays;
 
 /**
  * @author Cai Pengcheng
@@ -34,6 +33,21 @@ public class DbContainer {
         } else {
             LOGGER.info("Mongodb is not enable.");
         }
+    }
+
+    /**
+     * 返回一个MongoDB的连接。
+     */
+    public static MongoClient getMongoClient() {
+        return mongoClient;
+    }
+
+    /**
+     * 返回一个MongoDB的数据库。
+     * 数据库的名字由配置文件的“boring.app.mongodb.database”属性指定。
+     */
+    public static MongoDatabase getMongoDatabase() {
+        return mongoClient.getDatabase(BoringConfig.getAppMongoDatabase());
     }
 
     /**

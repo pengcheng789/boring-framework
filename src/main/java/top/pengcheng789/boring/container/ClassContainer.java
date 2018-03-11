@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import top.pengcheng789.boring.annotation.Controller;
 import top.pengcheng789.boring.annotation.Service;
 import top.pengcheng789.boring.annotation.Bean;
+import top.pengcheng789.boring.bean.Model;
 import top.pengcheng789.boring.config.BoringConfig;
 import top.pengcheng789.boring.util.ClassUtil;
 
@@ -106,4 +107,21 @@ public class ClassContainer {
         return classSet;
     }
 
+    /**
+     * 获取继承了top.pengcheng789.boring.bean.Model类的集合。
+     */
+    public static Set<Class<?>> getModelSet() {
+        LOGGER.info("Getting the model set ...");
+
+        Set<Class<?>> modelSet = new HashSet<>();
+
+        CLASS_SET.forEach(cls -> {
+            if (Model.class.isAssignableFrom(cls)) {
+                modelSet.add(cls);
+            }
+        });
+
+        LOGGER.info("Got the model set.");
+        return modelSet;
+    }
 }

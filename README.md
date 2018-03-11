@@ -29,6 +29,11 @@ See the [Wiki](https://github.com/pengcheng789/boring-framework/wiki).
 
 ## Update
 
+### 20180311
+
+* 框架已经会加载`top.pengcheng789.bean.Model`的子类了。
+* 删除了模型字段中的`primary key`属性。
+
 ### 20180123
 
 * Create the supporting of mongodb.

@@ -14,12 +14,15 @@
  * limitations under the License.
  */
 
-package top.pengcheng789.boring.util;
+package top.pengcheng789.boring.orm.exception;
 
 /**
  * @author Cai Pengcheng
- * Create date: 18-1-12
+ * Create Date: 2018-03-11
  */
-public final class DatabaseUtil {
+public class ObjectNotBelongsToClassException extends Exception {
 
+    public ObjectNotBelongsToClassException(String cause) {
+        super(cause);
+    }
 }
