@@ -70,4 +70,12 @@ public final class StringUtil {
         return result.charAt(0) == '_' ?
             result.substring(1, result.length()) : result;
     }
+
+    /**
+     * 将字符串解析成首字母大写，其余小写的格式。
+     */
+    public static String convertToFirstUppercase(String string) {
+        String s = String.valueOf(string.charAt(0)).toUpperCase();
+        return s + string.substring(1);
+    }
 }

@@ -29,6 +29,10 @@ See the [Wiki](https://github.com/pengcheng789/boring-framework/wiki).
 
 ## Update
 
+### 20180316
+
+* 添加了对模型字段中的外键字段解析的支持。
+
 ### 20180311
 
 * 框架已经会加载`top.pengcheng789.bean.Model`的子类了。

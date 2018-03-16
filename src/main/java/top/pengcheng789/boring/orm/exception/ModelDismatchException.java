@@ -14,24 +14,15 @@
  * limitations under the License.
  */
 
-package top.pengcheng789.boring.bean;
-
-
-import top.pengcheng789.boring.annotation.ModelField;
+package top.pengcheng789.boring.orm.exception;
 
 /**
  * @author Cai Pengcheng
- * Create date: 18-1-11
+ * Create Date: 2018-03-13
  */
-public abstract class Model {
-    @ModelField
-    public String id;
+public class ModelDismatchException extends Exception {
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public ModelDismatchException(String cause) {
+        super(cause);
     }
 }
